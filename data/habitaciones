@@ -1,0 +1,20 @@
+0001;estandar;300000;Sencilla;;TV,Escritorio,Vista a la ciudad
+0002;estandar;300000;Sencilla,Sencilla;;TV,Vista a la ciudad
+0003;estandar;300000;Sencilla,Doble;Kids;TV,Escritorio,Cocina privada,Vista a la ciudad
+0004;estandar;300000;Sencilla,Sencilla,Doble;;Balcon,TV,Nevera,Cocina privada,Parkeadero,Pet-friendly,Vista a la ciudad
+0005;estandar;300000;Sencilla,Sencilla,Doble,Doble;Kids,Kids;Balcon,TV,Escritorio,Nevera,Parkeadero,Pet-friendly,Vista a la ciudad
+0006;estandar;300000;Doble;Kids,Kids;Balcon,TV,Escritorio,Nevera,Cocina privada,Parkeadero,Pet-friendly,Vista a la ciudad
+0007;estandar;300000;Doble;Kids,Kids;Balcon,TV,Escritorio,Nevera,Cafetera,Cocina privada,Parkeadero,Pet-friendly,Vista a la playa
+0008;estandar;300000;Doble,Doble;Kids,Kids;Balcon,TV,Escritorio,Nevera,Cafetera,Cocina privada,Parkeadero,Pet-friendly,Vista a la playa
+0009;suite;400000;Doble;Kids;TV,Escritorio,Nevera,Cafetera,Parkeadero,Pet-friendly,Vista a la ciudad
+0010;suite;400000;Doble,Doble;;TV,Escritorio,Nevera,Cafetera,Parkeadero,Pet-friendly,Vista a la ciudad
+0011;suite;400000;Doble,Doble;Kids;TV,Escritorio,Nevera,Cafetera,Parkeadero,Pet-friendly,Vista a la ciudad
+0012;suite;400000;Queen;;Balcon,TV,Escritorio,Nevera,Cafetera,Cocina privada,Parkeadero,Pet-friendly,Vista a la ciudad
+0013;suite;400000;Doble,Queen;Kids,Kids;Balcon,TV,Escritorio,Nevera,Cafetera,Cocina privada,Parkeadero,Vista a la ciudad
+0014;suite;400000;Doble,Doble,Queen;Kids,Kids;Balcon,TV,Escritorio,Nevera,Cafetera,Cocina privada,Parkeadero,Vista a la playa
+0015;suite;400000;Doble,Doble,Doble,Queen;Kids,Kids;Balcon,TV,Escritorio,Nevera,Cafetera,Cocina privada,Parkeadero,Vista a la playa
+0016;suite doble;500000;King;Kids,Kids;Balcon,TV,TV,Escritorio,Nevera,Cafetera,Parkeadero,Pet-friendly,Vista a la ciudad
+0017;suite doble;500000;King;Kids,Kids;Balcon,TV,TV,Escritorio,Nevera,Cafetera,Parkeadero,Pet-friendly,Vista a la ciudad
+0018;suite doble;500000;King,Queen;Kids;Balcon,TV,TV,Escritorio,Nevera,Cafetera,Parkeadero,Pet-friendly,Vista a la playa
+0019;suite doble;500000;King,Queen;Kids;Balcon,TV,TV,Escritorio,Nevera,Cafetera,Parkeadero,Pet-friendly,Vista a la playa
+0020;suite doble;500000;King,King;Kids;Balcon,TV,TV,Escritorio,Nevera,Cafetera,Cocina privada,Parkeadero,Vista a la playa
