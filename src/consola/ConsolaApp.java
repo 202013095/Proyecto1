@@ -53,12 +53,40 @@ public class ConsolaApp{
 						    
 						    int opcion_selec= Integer.parseInt(input("Por favor seleccione una opción"));
 						    
-						    if (opcion_selec>opciones.length) {
+						    if (opcion_selec>opciones.length-5) {
 						    	ejecutarAplicacion();
 						    }
 						    
-						    else {
-						    	if (opcion_selec==6){	
+						    else { 
+						    	
+						    	if (opcion_selec==1){
+									  
+						    		System.out.println("Agregar descuento o aumento en tarifa de todas las habitaciones");
+						    		String precio= input("Ingrese el porcentaje de aumento, si desea un descuento aniada el signo - frente al porcentaje (ej.-20):");
+						    		String ejecucionmensaje=hotel.cambiarPrecioHabitaciones(precio);
+						    		System.out.println(ejecucionmensaje);}
+						    	
+						    	else if (opcion_selec==2){
+						  
+						    		String info= input("Ingrese el nombre de la cama de la cual desea modificar el precio base(King,Queen,Doble,Sencilla,Kids)");
+						    		String precio= input("Ingrese el nuevo precio");
+						    		String ejecucionmensaje=hotel.cambiarPrecioBaseHabitacion(info, precio);
+						    		System.out.println(ejecucionmensaje);}
+						    	
+						    	else if (opcion_selec==3){
+						    		String info= input("Ingrese el nombre de la cama de  (King,Queen,Doble,Sencilla,Kids)");
+						    		String info2= input("Ingrese las adiciones de la habitacion por una coma (Balcon,TV,Escritorio,Nevera,Cafetera,Cocina privada,Parkeadero,Pet-friendly,Vista a la playa,Vista a la ciudad"    );
+						    		String ejecucionmensaje=hotel.cambiarAdiciones(info,info2);
+						    		System.out.println(ejecucionmensaje);}
+						    	
+						    	else if (opcion_selec==4){
+						    		String info= input("Ingrese el numero de habitacion del cual desea cambiar las camas");
+						    		String info2= input("Ingrese las nuevas camas separadas por una coma (King,Queen,Doble,Sencilla,Kids)");
+						    		String ejecucionmensaje=hotel.cambiarCamas(info,info2);
+						    		System.out.println(ejecucionmensaje);
+						    	}
+						    	
+						    	else if (opcion_selec==5){	
 						    		String info= input("Ingrese el numero de habitacion");
 						    		info+=(";")+input("Ingrese el tipo de habitacion (estandar,suite,doblesuite)");
 						    		info+=(";")+input("Ingrese precio base");
@@ -71,12 +99,11 @@ public class ConsolaApp{
 						    		}
 						    		info+=(";")+input("Ingrese las adiciones de la habitacion por una coma (Balcon,TV,Escritorio,Nevera,Cafetera,Cocina privada,Parkeadero,Pet-friendly,Vista a la playa,Vista a la ciudad");
 						    		String ejecucionmensaje=hotel.crearHabitacion(info);
+						    		System.out.println( ejecucionmensaje);
 						    		
 						    	}
 						    	
 						    	
-						    }}}
-						    
 						    /*MENU RECEPCIONISTA*/
 						
 						    else if (manushow==2) {
@@ -84,7 +111,7 @@ public class ConsolaApp{
 						    	while (opcion2) {
 							    
 							    System.out.println("Que desea realizar?");
-							    String[] opciones = hotel.mostrarMenu();
+							    opciones = hotel.mostrarMenu();
 							    continuar=false;
 							    for (int i = 0; i < opciones.length; i++) {
 							    	  System.out.println(opciones[i]);
@@ -92,9 +119,9 @@ public class ConsolaApp{
 							    
 							    /*Seleccionar Menu*/ 
 							    
-							    int opcion_selec= Integer.parseInt(input("Por favor seleccione una opción"));
+							    int opcion_selec2= Integer.parseInt(input("Por favor seleccione una opción"));
 							    
-							    if (opcion_selec>opciones.length) {
+							    if (opcion_selec2>opciones.length) {
 							    	ejecutarAplicacion();
 							    }
 							    
@@ -110,7 +137,7 @@ public class ConsolaApp{
 						    	while (opcion2) {
 							    
 							    System.out.println("Que desea realizar?");
-							    String[] opciones = hotel.mostrarMenu();
+							    opciones = hotel.mostrarMenu();
 							    continuar=false;
 							    for (int i = 0; i < opciones.length; i++) {
 							    	  System.out.println(opciones[i]);
@@ -118,9 +145,9 @@ public class ConsolaApp{
 							    
 							    /*Seleccionar Menu*/ 
 							    
-							    int opcion_selec= Integer.parseInt(input("Por favor seleccione una opción"));
+							    int opcion_selec3= Integer.parseInt(input("Por favor seleccione una opción"));
 							    
-							    if (opcion_selec>opciones.length-1) {
+							    if (opcion_selec3>opciones.length-1) {
 							    	ejecutarAplicacion();
 							    }
 							    
@@ -149,7 +176,7 @@ public class ConsolaApp{
 					else
 					{
 						System.out.println("Por favor seleccione una opción válida.");
-					}}
+					}}}}}
 				
 				
 				catch (NumberFormatException e)
@@ -169,6 +196,7 @@ public class ConsolaApp{
 			System.out.println("2. Crear Usuario SINGUP");
 			System.out.println("3. Salir");
 		}
+		
 
 
 		private static void CargarInventarioUsuarios(Hotel hotel) throws FileNotFoundException, IOException
@@ -214,6 +242,11 @@ public class ConsolaApp{
 			}
 
 		
+
+		
+		
+
+
 
 		
 		
