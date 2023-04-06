@@ -84,7 +84,7 @@ public class Loader
 		return camas;
 	}
 	
-		public static ArrayList <Usuario>cargarUsuarios() throws FileNotFoundException, IOException
+		public static ArrayList <Usuario> cargarUsuarios() throws FileNotFoundException, IOException
 	{	
 		
 		ArrayList <Usuario> Usuarios = new ArrayList<>();

@@ -11,12 +11,12 @@ public class Grupo
 	private ArrayList<Huesped> listaHuespedes;
 	
 	//Generador
-	public Grupo(String nombreTitular, int numeroPersonas, int numeroNinos)
+	public Grupo(String nombreTitular, int numeroPersonas, int numeroNinos, ArrayList<Huesped> listaHuespedes)
 	{
 		this.nombreTitular = nombreTitular;
 		this.numeroPersonas = numeroPersonas;
 		this.numeroNinos = numeroNinos;
-		this.listaHuespedes = new ArrayList<Huesped>();
+		this.listaHuespedes = listaHuespedes;
 	}
 
 	//Getters and Setters

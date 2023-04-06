@@ -9,10 +9,10 @@ public class Huesped
 	private int celular;
 	private int acompanantes;
 	private int edad;
-	private Grupo grupo;
+	//private Grupo grupo;
 	
 	//Generador
-	public Huesped(String nombre, int documento, String correo, int celular, int acompanantes, int edad, Grupo grupo)  
+	public Huesped(String nombre, int documento, String correo, int celular, int acompanantes, int edad)  
 	{
 		this.nombre = nombre;
 		this.documento = documento;
@@ -20,16 +20,16 @@ public class Huesped
 		this.celular = celular;
 		this.acompanantes = acompanantes;
 		this.edad =  edad;
-		this.grupo =  grupo;
+		//this.grupo =  grupo;
 	}
 	
-	public Grupo getGrupo() {
-		return grupo;
-	}
+//	public Grupo getGrupo() {
+//		return grupo;
+//	}
 
-	public void setGrupo(Grupo grupo) {
-		this.grupo = grupo;
-	}
+//	public void setGrupo(Grupo grupo) {
+//		this.grupo = grupo;
+//	}
 
 	//Getters and Setters
 	public String getNombre() {
