@@ -13,6 +13,7 @@ import modelo.Adicion;
 import modelo.Administrador;
 import modelo.Cama;
 import modelo.Empleado;
+import modelo.Fecha;
 import modelo.Habitacion;
 import modelo.Recepcionista;
 import modelo.Usuario;
@@ -84,7 +85,7 @@ public class Loader
 		return camas;
 	}
 	
-		public static ArrayList <Usuario> cargarUsuarios() throws FileNotFoundException, IOException
+		public static ArrayList <Usuario>cargarUsuarios() throws FileNotFoundException, IOException
 	{	
 		
 		ArrayList <Usuario> Usuarios = new ArrayList<>();
@@ -134,9 +135,52 @@ public class Loader
 			String linea = br.readLine();
 			while (linea != null) 
 			{
-	
 				String[] partes = linea.split(";");
-						
+				if (partes.length>6) {
+					
+					int id = Integer.parseInt(partes[0]);
+					String tipo = partes[1];
+					
+					float precioBase = Float.valueOf(partes[7]);
+					float precioFinal = Float.valueOf(partes[8]);
+					
+					ArrayList<Cama> listaCamas = new ArrayList<>();
+					ArrayList<Adicion> listaAdiciones = new ArrayList<>();
+					
+					/*Revisar formato de fecha para carga*/
+					ArrayList<String> listaFechas = new ArrayList<>();
+					
+					String[] camas = partes[2].split(",");
+					
+					for (String cama : camas) 
+					{
+						listaCamas.add(cargarCamas().get(cama));
+					}
+					
+					String[] adiciones = partes[3].split(",");
+					
+					for (String adicion : adiciones) 
+					{
+						listaAdiciones.add(cargarAdiciones().get(adicion));
+					}
+					
+					String[] fechas = partes[4].split(",");
+					
+					for (String fecha : fechas) 
+					{
+						listaFechas.add(fecha);
+					}
+					
+					int capacidad=Integer.parseInt(partes[5]);
+					int capacidadKids=Integer.parseInt(partes[6]);
+					
+					Habitacion laHabitacion = new Habitacion(id, tipo, listaCamas, listaAdiciones,listaFechas, capacidad, capacidadKids, precioBase, precioFinal);
+					habitaciones.put(id, laHabitacion);
+					
+				}
+	
+				else {
+					System.out.println("holi");	
 				int id = Integer.parseInt(partes[0]);
 				String tipo = partes[1];
 				float precioBase = Float.valueOf(partes[2]);
@@ -147,6 +191,7 @@ public class Loader
 				ArrayList<Adicion> listaAdiciones = new ArrayList<>();
 				
 				Habitacion laHabitacion = habitaciones.get(id);
+				ArrayList<String> listaFechas = new ArrayList<>();
 				
 				String[] camas = partes[3].split(",");
 				
@@ -180,12 +225,12 @@ public class Loader
 				//Crea la habitacion
 				if (laHabitacion == null)
 				{
-					laHabitacion = new Habitacion(id, tipo, listaCamas, listaAdiciones, capacidad, capacidadKids, precioBase, precioFinal);
+					laHabitacion = new Habitacion(id, tipo, listaCamas, listaAdiciones,listaFechas, capacidad, capacidadKids, precioBase, precioFinal);
 					habitaciones.put(id, laHabitacion);
-				}
+				}}
 				
 				linea = br.readLine(); 
-			} 
+			}
 			br.close();
 			
 			/*
@@ -213,6 +258,7 @@ public class Loader
 				float precioFinal = precioBase;
 				ArrayList<Cama> listaCamas = new ArrayList<>();
 				ArrayList<Adicion> listaAdiciones = new ArrayList<>();
+				ArrayList<String> listaFechas = new ArrayList<>();
 				Habitacion laHabitacion = habitacionesadd.get(id);
 				String[] camas = partes[3].split(",");
 				for (String cama : camas) 
@@ -233,7 +279,6 @@ public class Loader
 					}
 
 				}
-				System.out.println("ganzo3");
 				
 				String[] adiciones = partes[5].split(",");
 				
@@ -246,23 +291,37 @@ public class Loader
 				//Crea la habitacion
 				if (laHabitacion == null)
 				{
-					laHabitacion = new Habitacion(id, tipo, listaCamas, listaAdiciones, capacidad, capacidadKids, precioBase, precioFinal);
+					laHabitacion = new Habitacion(id, tipo, listaCamas, listaAdiciones, listaFechas, capacidad, capacidadKids, precioBase, precioFinal);
 					habitacionesadd.put(id, laHabitacion);
 				}
 				
-				System.out.println("ganzo4");	
 			GuardarCambiosHabitaciones(habitacionesadd);
 			return habitacionesadd;
 		}
 		
+		/*Revisar guardada de documentos*/
 		public static void GuardarCambiosHabitaciones(Map<Integer, Habitacion> habitaciones) throws IOException {
-			System.out.println("ganzo");
 			 for (Map.Entry<Integer,Habitacion> habitacion : habitaciones.entrySet()) {
-				 BufferedWriter bw = new BufferedWriter(new FileWriter("habitaciones.txt", true));
+				 BufferedWriter bw = new BufferedWriter(new FileWriter("C:\\Users\\valen\\Downloads\\Proyecto_1-main (2)\\Proyecto_1-main\\data\\habitaciones2",true));
 				 Habitacion habitacioninf=habitacion.getValue();
-				 bw.write(String.valueOf(habitacioninf));
+				 String guardarwrite = String.valueOf(habitacioninf.getIdHabitacion())+";"+habitacioninf.getTipoHabitacion()+";";
+				 for (Cama cama: habitacioninf.getListaCamas()) {
+					 guardarwrite+=cama.getTipo()+",";
+				 }
+				 guardarwrite+=";";
+				 for (Adicion add: habitacioninf.getListaAdiciones()) {
+					 guardarwrite+=add.getAdicion()+",";
+				 }
+				 guardarwrite+=";";
+				 for (String fecha: habitacioninf.getListaFechas()) {
+					 guardarwrite+=fecha+",";
+				 }
+				 guardarwrite+=";"+String.valueOf(habitacioninf.getCapacidad())+";"+String.valueOf(habitacioninf.getCapacidadKids())+";"+String.valueOf(habitacioninf.getPrecioBase())+";"+String.valueOf(habitacioninf.getPrecioFinal());
+				 
+				 bw.write(guardarwrite);
 		         bw.newLine();
 		         bw.close();
 			 }
 		         
   }}
+
