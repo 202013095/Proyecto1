@@ -1,6 +1,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.Map;
 
 public class Habitacion 
 {
@@ -9,7 +10,7 @@ public class Habitacion
 	private String tipoHabitacion;
 	private ArrayList<Cama> listaCamas;
 	private ArrayList<Adicion> listaAdiciones;
-	private ArrayList<Fecha> listaFechas;
+	private ArrayList<String> listaFechas = new ArrayList<>();
 	//private Disponible disponibilidad;
 	private int capacidad;
 	private int capacidadKids;
@@ -17,13 +18,14 @@ public class Habitacion
 	private float precioFinal;
 	 
 	//Generador
-	public Habitacion(int idHabitacion, String tipoHabitacion, ArrayList<Cama> listaCamas, ArrayList<Adicion> listaAdiciones, int capacidad, int capacidadKids, float precioBase, float precioFinal)
+	/*Revusar listafechas*/
+	public Habitacion(int idHabitacion, String tipoHabitacion, ArrayList<Cama> listaCamas, ArrayList<Adicion> listaAdiciones, ArrayList<String> listaFecha,int capacidad, int capacidadKids, float precioBase, float precioFinal)
 	{
 		this.idHabitacion = idHabitacion;
 		this.tipoHabitacion = tipoHabitacion;
 		this.listaCamas = listaCamas;
 		this.listaAdiciones = listaAdiciones;
-		this.listaFechas = new ArrayList<Fecha>();
+		this.listaFechas = listaFechas;
 		//this.disponibilidad = disponibilidad;
 		this.capacidad = capacidad;
 		this.capacidadKids = capacidadKids;
@@ -96,11 +98,11 @@ public class Habitacion
 		this.capacidadKids = capacidadKids;
 	}
 
-	public ArrayList<Fecha> getListaFechas() {
+	public ArrayList<String> getListaFechas() {
 		return listaFechas;
 	}
 
-	public void setListaFechas(ArrayList<Fecha> listaFechas) {
+	public void setListaFechas(ArrayList<String> listaFechas) {
 		this.listaFechas = listaFechas;
 	}
 
@@ -113,8 +115,84 @@ public class Habitacion
 //	}	
 	
 	//Metodos	
-	public String decirHola()
-	{
-		return "hola";
+
+	public void cambiarCamas(Map<String, Cama> camas, String info) {
+		
+		String[] infosplit = info.split(",");
+		ArrayList<Cama> listaCamasnew = new ArrayList<>();
+		float precioFinalnew = 0;
+		int newcapacidad=0;
+		
+		for (String cama : infosplit) 
+		{
+			listaCamasnew.add(camas.get(cama));
+			newcapacidad+=camas.get(cama).getCapacidad();
+			precioFinalnew+=camas.get(cama).getPrecio();
+		}
+		
+		capacidad=newcapacidad;
+		float precioAdiciones= precioadiciones();
+		
+		listaCamas=listaCamasnew;
+		precioFinal=precioFinalnew+precioBase+precioAdiciones;
+		
 	}
+	
+	public void cambiarAdiciones(Map<String, Adicion> adicion, String info) {
+		
+		String[] infosplit = info.split(",");
+		ArrayList<Adicion> listaAdicionesnew = new ArrayList<>();
+		
+		float precioFinalnew = 0;
+		
+		for (String adicioninfo : infosplit) 
+		{
+			listaAdicionesnew.add(adicion.get(adicioninfo));
+			precioFinalnew+=adicion.get(adicioninfo).getPrecio();
+		}
+		
+		float precioCamas= precioCamas();
+		
+		listaAdiciones=listaAdicionesnew;
+		precioFinal=precioFinalnew+precioBase+precioCamas;
+		
+	}
+	
+	private float precioadiciones() {
+		
+		float precioFinalnew = 0;
+		for (Adicion adicions : listaAdiciones) 
+			
+		{
+			precioFinalnew+=adicions.getPrecio();
+		}
+		
+		return precioFinalnew; 
+	}
+	
+private float precioCamas() {
+		
+		float precioFinalnew = 0;
+		for (Adicion cama : listaAdiciones) 
+			
+		{
+			precioFinalnew+=cama.getPrecio();
+		}
+		
+		return precioFinalnew; 
+	}
+
+public void aumentotarifa(int porcentaje) {
+	
+	precioFinal=precioFinal+((precioFinal*porcentaje)/100);
+	
 }
+
+public void descuentotarifa(int porcentaje) {
+	
+	precioFinal=precioFinal-((precioFinal*porcentaje)/100);
+	
+}
+
+}
+
