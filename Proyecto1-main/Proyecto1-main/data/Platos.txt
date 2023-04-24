@@ -1,0 +1,11 @@
+Desayuno_continental;12700;0
+Desayuno_dietetico;13200;1
+Desayuno_americano;11000;0
+Filete_mignon;23200;1
+Parrillada;24100;1
+Milanesa_de_pollo;22300;0
+
+
+
+
+
