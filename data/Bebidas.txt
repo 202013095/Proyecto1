@@ -1,7 +1,0 @@
-Te;3400
-Cafe;1200
-Jugo_de_Frutas;5400
-Cerveza;3200
-Refresco;2100
-Chocomilk;6000
-Limonada;2300
